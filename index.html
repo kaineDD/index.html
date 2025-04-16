@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Haunted Australia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 30px;
+      background-color: #111;
+      color: #f2f2f2;
+    }
+    select, option {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 30px;
+    }
+    li {
+      background-color: #222;
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 5px;
+    }
+    h1 {
+      color: #ff6666;
+    }
+  </style>
+</head>
+<body>
+  <h1>Haunted Locations in Australia</h1>
+
+  <label for="stateSelect">Choose a state:</label>
+  <br>
+  <select id="stateSelect" onchange="showLocations()">
+    <option value="">-- Select State --</option>
+    <option value="NSW">New South Wales</option>
+    <option value="VIC">Victoria</option>
+    <option value="QLD">Queensland</option>
+    <option value="WA">Western Australia</option>
+    <option value="SA">South Australia</option>
+    <option value="TAS">Tasmania</option>
+    <option value="NT">Northern Territory</option>
+    <option value="ACT">Australian Capital Territory</option>
+  </select>
+
+  <ul id="locationList"></ul>
+
+  <script>
+    const hauntedLocations = {
+      NSW: [
+        "Monte Cristo Homestead, Junee",
+        "Gladesville Mental Hospital, Sydney",
+        "Quarantine Station, North Head"
+      ],
+      VIC: [
+        "Aradale Lunatic Asylum, Ararat",
+        "J Ward, Ararat",
+        "Beechworth Lunatic Asylum"
+      ],
+      QLD: [
+        "Boggo Road Gaol, Brisbane",
+        "Toowong Cemetery, Brisbane",
+        "Old Beenleigh Town"
+      ],
+      WA: [
+        "Fremantle Arts Centre",
+        "Albany Convict Gaol",
+        "National Hotel, Fremantle"
+      ],
+      SA: [
+        "Adelaide Gaol",
+        "Kapunda – Haunted Hospital",
+        "Old Tailem Town"
+      ],
+      TAS: [
+        "Port Arthur Historic Site",
+        "Willow Court Asylum, New Norfolk",
+        "Richmond Gaol"
+      ],
+      NT: [
+        "Old Alice Springs Gaol",
+        "The Residency, Alice Springs"
+      ],
+      ACT: [
+        "Canberra's Old Parliament House",
+        "Duntroon House"
+      ]
+    };
+
+    function showLocations() {
+      const state = document.getElementById("stateSelect").value;
+      const list = document.getElementById("locationList");
+      list.innerHTML = "";
+
+      if (hauntedLocations[state]) {
+        hauntedLocations[state].forEach(location => {
+          const li = document.createElement("li");
+          li.textContent = location;
+          list.appendChild(li);
+        });
+      }
+    }
+  </script>
+</body>
+</html>
